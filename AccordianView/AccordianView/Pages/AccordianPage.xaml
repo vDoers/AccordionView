@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="#EEEEEE"
+             Title="Accordian View"
+             x:Class="AccordianView.Pages.AccordianPage">
+	<ScrollView>
+    <StackLayout Padding="10" Spacing="20">
+      <Label Text="Watch List" VerticalOptions="Center" TextColor="#002855" Font="Bold" FontSize="Large" />
+      <BoxView BackgroundColor="#002855" HeightRequest="1"/>
+      <StackLayout HeightRequest="40" Spacing="0" Padding="1,1,1,1" BackgroundColor="Gray" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+        <StackLayout Padding="10,0,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="White" VerticalOptions="FillAndExpand">
+          <Label Text="Second Watch List" HorizontalOptions="FillAndExpand" TextColor="Gray" VerticalOptions="CenterAndExpand" YAlign="Center"/>
+        </StackLayout>
+        <StackLayout Padding="40,10,40,10" VerticalOptions="FillAndExpand" BackgroundColor="#204D74">
+          <Label BackgroundColor="#204D74" Text="Manage" VerticalOptions="FillAndExpand" YAlign="Center" TextColor="White" />
+        </StackLayout>
+      </StackLayout>
+      <StackLayout HeightRequest="40" Spacing="0" Padding="1,1,1,1" BackgroundColor="Gray" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+        <StackLayout Padding="10,0,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="White" VerticalOptions="FillAndExpand">
+          <Label Text="Symbol" HorizontalOptions="FillAndExpand" TextColor="Gray" VerticalOptions="CenterAndExpand" YAlign="Center"/>
+        </StackLayout>
+        <StackLayout Padding="40,10,40,10" VerticalOptions="FillAndExpand" BackgroundColor="#204D74">
+          <Label BackgroundColor="#204D74" Text=" Search " VerticalOptions="FillAndExpand" YAlign="Center" TextColor="White" />
+        </StackLayout>
+      </StackLayout>
+      
+        <StackLayout x:Name="containerOne" BackgroundColor="Gray" Padding="1,1,1,1">
+        <StackLayout BackgroundColor="#F5F5F5" Padding="0,0,0,0">
+          <StackLayout Padding="10,0,10,0">
+            <Grid HorizontalOptions="FillAndExpand">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <Label Text="DIS" Grid.Row="0" YAlign="Center" TextColor="#204D74" Grid.Column="0"/>
+              <Label Text="100.29" Grid.Row="0" YAlign="Center" TextColor="Gray" Grid.Column="1"/>
+              <Label Text="0.49" Grid.Row="0" YAlign="Center" TextColor="Green" Grid.Column="2"/>
+              <Label Text="0.5%" Grid.Row="0" YAlign="Center" TextColor="Green" Grid.Column="3"/>
+              <Image x:Name="colExpand" Source="{Binding ImageFirstFile}" HeightRequest="35" WidthRequest="35" Grid.Row="0" Grid.Column="4" HorizontalOptions="End" >
+                <Image.GestureRecognizers>
+                  <TapGestureRecognizer
+                          Command="{Binding CollapsExpandCommand}"
+                          CommandParameter="1" />
+                </Image.GestureRecognizers>
+              </Image>
+            </Grid>
+          </StackLayout>
+          <StackLayout x:Name="contentLayout" IsVisible="{Binding IsFirstVisible}">
+            <StackLayout BackgroundColor="White" Padding="15,15,15,50">
+              <StackLayout BackgroundColor="Gray" Padding="1,1,1,1">
+                <Grid RowSpacing="0">
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                  </Grid.RowDefinitions>
+                  <StackLayout Padding="10,0,0,0" BackgroundColor="#337AB7" >
+                    <Label Text="Walt Desney Co" HeightRequest="40" TextColor="White" FontSize="Medium" YAlign="Center" Grid.Row="0"/>
+                  </StackLayout>
+                  <StackLayout Grid.Row="1" Spacing="30" BackgroundColor="White">
+                    <Grid>
+                      <Grid.RowDefinitions>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                      </Grid.RowDefinitions>
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                      </Grid.ColumnDefinitions>
+                      <StackLayout Padding="20,0,0,0" Grid.Row="1" Grid.Column="0">
+                        <Label Text="100.29" TextColor="Black"/>
+                        <Label Text="0.49 (0.5%)" TextColor="Green"/>
+                      </StackLayout>
+                      <BoxView BackgroundColor="Gray" HorizontalOptions="Center" WidthRequest="1" Grid.Row="1" Grid.Column="1"/>
+                      <StackLayout Padding="10,0,0,0" HorizontalOptions="Start" Grid.Row="1" Grid.Column="2">
+                        <StackLayout Spacing="0">
+                          <Label Text="Bid:" Font="Bold" TextColor="#204D74"/>
+                          <ContentView BackgroundColor="#777777" Padding="10,2,10,2">
+                            <Label Text="100.07 x 3" XAlign="Center" TextColor="White"/>
+                          </ContentView>
+                        </StackLayout>
+                        <StackLayout Spacing="0">
+                          <Label Text="Ask:" Font="Bold" TextColor="#204D74"/>
+                          <ContentView BackgroundColor="#777777" Padding="10,2,10,2">
+                            <Label Text="100.39 x 1" XAlign="Center" TextColor="White"/>
+                          </ContentView>
+                        </StackLayout>
+                      </StackLayout>
+                    </Grid>
+                    <BoxView HeightRequest="1" BackgroundColor="#F0F0F0"/>
+                    <StackLayout>
+                      <StackLayout Spacing="25" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Open:" Font="Bold" XAlign="End" TextColor="#204D74" WidthRequest="60" />
+                        <ContentView BackgroundColor="#777777" Padding="10,2,10,2">
+                          <Label Text="99.81" XAlign="Center" TextColor="White"/>
+                        </ContentView>
+                      </StackLayout>
+                      <StackLayout Spacing="25" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Previous Close:" LineBreakMode="WordWrap" XAlign="End" WidthRequest="60" Font="Bold" TextColor="#204D74"/>
+                        <ContentView BackgroundColor="#777777" VerticalOptions="Center" HorizontalOptions="Start" Padding="10,2,10,2">
+                          <Label Text="99.81" XAlign="Center" TextColor="White"/>
+                        </ContentView>
+                      </StackLayout>
+                      <StackLayout Spacing="25" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Day Range:" LineBreakMode="WordWrap" XAlign="End" WidthRequest="115" Font="Bold" TextColor="#204D74"/>
+                        <ContentView BackgroundColor="#777777" VerticalOptions="Center"  Padding="10,2,10,2">
+                          <Label Text="99.81 - 100.53" XAlign="Center" TextColor="White"/>
+                        </ContentView>
+                      </StackLayout>
+                      <StackLayout Spacing="25" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label Text="52 Week High:" LineBreakMode="WordWrap" XAlign="End" WidthRequest="70" Font="Bold" TextColor="#204D74"/>
+                        <ContentView BackgroundColor="#777777" VerticalOptions="Center"  Padding="10,2,10,2">
+                          <Label Text="120.08" XAlign="Center" TextColor="White"/>
+                        </ContentView>
+                      </StackLayout>
+                      <StackLayout Spacing="25" Padding="0,0,0,15" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label Text="52 Week Low:" LineBreakMode="WordWrap" XAlign="End" WidthRequest="70" Font="Bold" TextColor="#204D74"/>
+                        <ContentView BackgroundColor="#777777" VerticalOptions="Center"  Padding="10,2,10,2">
+                          <Label Text="898.24" XAlign="Center" TextColor="White"/>
+                        </ContentView>
+                      </StackLayout>
+                    </StackLayout>
+                  </StackLayout>
+                </Grid>
+              </StackLayout>
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal" Padding="10">
+              <Button Text="Trade" BackgroundColor="#204D74" WidthRequest="100" TextColor="White" />
+              <Button Text="Remove" BackgroundColor="#204D74" WidthRequest="100" TextColor="White" />
+            </StackLayout>
+          </StackLayout>
+        </StackLayout>
+      </StackLayout>
+
+        <StackLayout x:Name="containertwo" BackgroundColor="Gray" Padding="1,1,1,1">
+        <StackLayout BackgroundColor="#F5F5F5" Padding="0,0,0,0">
+          <StackLayout Padding="10,0,10,0">
+            <Grid HorizontalOptions="FillAndExpand">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <Label Text="AAPL" Grid.Row="0" YAlign="Center" TextColor="#204D74" Grid.Column="0"/>
+              <Label Text="100.35" Grid.Row="0" YAlign="Center" TextColor="Gray" Grid.Column="1"/>
+              <Label Text="-0.7" Grid.Row="0" YAlign="Center" TextColor="Red" Grid.Column="2"/>
+              <Label Text="-0.7%" Grid.Row="0" YAlign="Center" TextColor="Red" Grid.Column="3"/>
+              <Image x:Name="colExpand2" Source="{Binding ImageSecondFile}" HeightRequest="35" WidthRequest="35" Grid.Row="0" Grid.Column="4" HorizontalOptions="End" >
+                <Image.GestureRecognizers>
+                  <TapGestureRecognizer
+                          Command="{Binding CollapsExpandCommand}"
+                          CommandParameter="2" />
+                </Image.GestureRecognizers>
+              </Image>
+            </Grid>
+          </StackLayout>
+          <StackLayout x:Name="contentLayout2" IsVisible="{Binding IsSecondVisible}">
+            <StackLayout BackgroundColor="White" Padding="15,15,15,50">
+              <StackLayout BackgroundColor="Gray" Padding="1,1,1,1">
+                <Grid RowSpacing="0">
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                  </Grid.RowDefinitions>
+                  <StackLayout Padding="10,0,0,0" BackgroundColor="#337AB7" >
+                    <Label Text="Apple Inc" HeightRequest="40" TextColor="White" FontSize="Medium" YAlign="Center" Grid.Row="0"/>
+                  </StackLayout>
+                  <StackLayout Grid.Row="1" Spacing="30" BackgroundColor="White">
+                    <Grid>
+                      <Grid.RowDefinitions>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                      </Grid.RowDefinitions>
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                      </Grid.ColumnDefinitions>
+                      <StackLayout Padding="20,0,0,0" Grid.Row="1" Grid.Column="0">
+                        <Label Text="100.29" TextColor="Black"/>
+                        <Label Text="0.49 (0.5%)" TextColor="Green"/>
+                      </StackLayout>
+                      <BoxView BackgroundColor="Gray" HorizontalOptions="Center" WidthRequest="1" Grid.Row="1" Grid.Column="1"/>
+                      <StackLayout Padding="10,0,0,0" HorizontalOptions="Start" Grid.Row="1" Grid.Column="2">
+                        <StackLayout Spacing="0">
+                          <Label Text="Bid:" Font="Bold" TextColor="#204D74"/>
+                          <ContentView BackgroundColor="#777777" Padding="10,2,10,2">
+                            <Label Text="100.07 x 3" XAlign="Center" TextColor="White"/>
+                          </ContentView>
+                        </StackLayout>
+                        <StackLayout Spacing="0">
+                          <Label Text="Ask:" Font="Bold" TextColor="#204D74"/>
+                          <ContentView BackgroundColor="#777777" Padding="10,2,10,2">
+                            <Label Text="100.39 x 1" XAlign="Center" TextColor="White"/>
+                          </ContentView>
+                        </StackLayout>
+                      </StackLayout>
+                    </Grid>
+                    <BoxView HeightRequest="1" BackgroundColor="#F0F0F0"/>
+                    <StackLayout>
+                      <StackLayout Spacing="25" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Open:" Font="Bold" XAlign="End" TextColor="#204D74" WidthRequest="60" />
+                        <ContentView BackgroundColor="#777777" Padding="10,2,10,2">
+                          <Label Text="99.81" XAlign="Center" TextColor="White"/>
+                        </ContentView>
+                      </StackLayout>
+                      <StackLayout Spacing="25" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Previous Close:" LineBreakMode="WordWrap" XAlign="End" WidthRequest="60" Font="Bold" TextColor="#204D74"/>
+                        <ContentView BackgroundColor="#777777" VerticalOptions="Center" HorizontalOptions="Start" Padding="10,2,10,2">
+                          <Label Text="99.81" XAlign="Center" TextColor="White"/>
+                        </ContentView>
+                      </StackLayout>
+                      <StackLayout Spacing="25" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Day Range:" LineBreakMode="WordWrap" XAlign="End" WidthRequest="115" Font="Bold" TextColor="#204D74"/>
+                        <ContentView BackgroundColor="#777777" VerticalOptions="Center"  Padding="10,2,10,2">
+                          <Label Text="99.81 - 100.53" XAlign="Center" TextColor="White"/>
+                        </ContentView>
+                      </StackLayout>
+                      <StackLayout Spacing="25" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label Text="52 Week High:" LineBreakMode="WordWrap" XAlign="End" WidthRequest="70" Font="Bold" TextColor="#204D74"/>
+                        <ContentView BackgroundColor="#777777" VerticalOptions="Center"  Padding="10,2,10,2">
+                          <Label Text="120.08" XAlign="Center" TextColor="White"/>
+                        </ContentView>
+                      </StackLayout>
+                      <StackLayout Spacing="25" Padding="0,0,0,15" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label Text="52 Week Low:" LineBreakMode="WordWrap" XAlign="End" WidthRequest="70" Font="Bold" TextColor="#204D74"/>
+                        <ContentView BackgroundColor="#777777" VerticalOptions="Center"  Padding="10,2,10,2">
+                          <Label Text="898.24" XAlign="Center" TextColor="White"/>
+                        </ContentView>
+                      </StackLayout>
+                    </StackLayout>
+                  </StackLayout>
+                </Grid>
+              </StackLayout>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="10">
+              <Button Text="Trade" BackgroundColor="#204D74" WidthRequest="100" TextColor="White"/>
+              <Button Text="Remove" BackgroundColor="#204D74" WidthRequest="100" TextColor="White"/>
+            </StackLayout>
+          </StackLayout>
+        </StackLayout>
+      </StackLayout>
+     
+        <StackLayout x:Name="containerThree" BackgroundColor="Gray" Padding="1,1,1,1">
+        <StackLayout BackgroundColor="#F5F5F5" Padding="0,0,0,0">
+          <StackLayout Padding="10,0,10,0">
+            <Grid HorizontalOptions="FillAndExpand">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <Label Text="BMY" Grid.Row="0" YAlign="Center" TextColor="#204D74" Grid.Column="0"/>
+              <Label Text="71.33" Grid.Row="0" YAlign="Center" TextColor="Gray" Grid.Column="1"/>
+              <Label Text="0.58" Grid.Row="0" YAlign="Center" TextColor="Green" Grid.Column="2"/>
+              <Label Text="0.83%" Grid.Row="0" YAlign="Center" TextColor="Green" Grid.Column="3"/>
+              <Image x:Name="colExpand3" Source="{Binding ImageThirdFile}" HeightRequest="35" WidthRequest="35" Grid.Row="0" Grid.Column="4" HorizontalOptions="End" >
+                <Image.GestureRecognizers>
+                  <TapGestureRecognizer
+                          Command="{Binding CollapsExpandCommand}"
+                          CommandParameter="3" />
+                </Image.GestureRecognizers>
+              </Image>
+            </Grid>
+          </StackLayout>
+          <StackLayout x:Name="contentLayout3" IsVisible="{Binding IsThirdVisible}">
+            <StackLayout BackgroundColor="White" Padding="15,15,15,50">
+              <StackLayout BackgroundColor="Gray" Padding="1,1,1,1">
+                <Grid RowSpacing="0">
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                  </Grid.RowDefinitions>
+                  <StackLayout Padding="10,0,0,0" BackgroundColor="#337AB7" >
+                    <Label Text="Bristol-Myers Squibb Comapny" HeightRequest="40" TextColor="White" FontSize="Medium" YAlign="Center" Grid.Row="0"/>
+                  </StackLayout>
+                  <StackLayout Grid.Row="1" Spacing="30" BackgroundColor="White">
+                    <Grid>
+                      <Grid.RowDefinitions>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                      </Grid.RowDefinitions>
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                      </Grid.ColumnDefinitions>
+                      <StackLayout Padding="20,0,0,0" Grid.Row="1" Grid.Column="0">
+                        <Label Text="100.29" TextColor="Black"/>
+                        <Label Text="0.49 (0.5%)" TextColor="Green"/>
+                      </StackLayout>
+                      <BoxView BackgroundColor="Gray" HorizontalOptions="Center" WidthRequest="1" Grid.Row="1" Grid.Column="1"/>
+                      <StackLayout Padding="10,0,0,0" HorizontalOptions="Start" Grid.Row="1" Grid.Column="2">
+                        <StackLayout Spacing="0">
+                          <Label Text="Bid:" Font="Bold" TextColor="#204D74"/>
+                          <ContentView BackgroundColor="#777777" Padding="10,2,10,2">
+                            <Label Text="100.07 x 3" XAlign="Center" TextColor="White"/>
+                          </ContentView>
+                        </StackLayout>
+                        <StackLayout Spacing="0">
+                          <Label Text="Ask:" Font="Bold" TextColor="#204D74"/>
+                          <ContentView BackgroundColor="#777777" Padding="10,2,10,2">
+                            <Label Text="100.39 x 1" XAlign="Center" TextColor="White"/>
+                          </ContentView>
+                        </StackLayout>
+                      </StackLayout>
+                    </Grid>
+                    <BoxView HeightRequest="1" BackgroundColor="#F0F0F0"/>
+                    <StackLayout>
+                      <StackLayout Spacing="25" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Open:" Font="Bold" XAlign="End" TextColor="#204D74" WidthRequest="60" />
+                        <ContentView BackgroundColor="#777777" Padding="10,2,10,2">
+                          <Label Text="99.81" XAlign="Center" TextColor="White"/>
+                        </ContentView>
+                      </StackLayout>
+                      <StackLayout Spacing="25" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Previous Close:" LineBreakMode="WordWrap" XAlign="End" WidthRequest="60" Font="Bold" TextColor="#204D74"/>
+                        <ContentView BackgroundColor="#777777" VerticalOptions="Center" HorizontalOptions="Start" Padding="10,2,10,2">
+                          <Label Text="99.81" XAlign="Center" TextColor="White"/>
+                        </ContentView>
+                      </StackLayout>
+                      <StackLayout Spacing="25" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Day Range:" LineBreakMode="WordWrap" XAlign="End" WidthRequest="115" Font="Bold" TextColor="#204D74"/>
+                        <ContentView BackgroundColor="#777777" VerticalOptions="Center"  Padding="10,2,10,2">
+                          <Label Text="99.81 - 100.53" XAlign="Center" TextColor="White"/>
+                        </ContentView>
+                      </StackLayout>
+                      <StackLayout Spacing="25" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label Text="52 Week High:" LineBreakMode="WordWrap" XAlign="End" WidthRequest="70" Font="Bold" TextColor="#204D74"/>
+                        <ContentView BackgroundColor="#777777" VerticalOptions="Center"  Padding="10,2,10,2">
+                          <Label Text="120.08" XAlign="Center" TextColor="White"/>
+                        </ContentView>
+                      </StackLayout>
+                      <StackLayout Spacing="25" Padding="0,0,0,15" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label Text="52 Week Low:" LineBreakMode="WordWrap" XAlign="End" WidthRequest="70" Font="Bold" TextColor="#204D74"/>
+                        <ContentView BackgroundColor="#777777" VerticalOptions="Center"  Padding="10,2,10,2">
+                          <Label Text="898.24" XAlign="Center" TextColor="White"/>
+                        </ContentView>
+                      </StackLayout>
+                    </StackLayout>
+                  </StackLayout>
+                </Grid>
+              </StackLayout>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="10">
+              <Button Text="Trade" BackgroundColor="#204D74" WidthRequest="100" TextColor="White"/>
+              <Button Text="Remove" BackgroundColor="#204D74" WidthRequest="100" TextColor="White"/>
+            </StackLayout>
+          </StackLayout>
+        </StackLayout>
+      </StackLayout>
+      
+    </StackLayout>
+  </ScrollView>
+</ContentPage>
